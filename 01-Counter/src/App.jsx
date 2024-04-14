@@ -1,4 +1,8 @@
-const { useState } = require("react")
+import { useState } from 'react'
+
+import './App.css'
+
+
 
 
 const App = () => {
@@ -6,7 +10,7 @@ const App = () => {
 let [counter,setCounter] = useState(1)
 
 const addValue = () => {
-    if(counter <= 20){
+    if(counter < 20){
         setCounter(counter+1)
     }else{
         alert("You Not Add Value More Than 20")
@@ -33,3 +37,6 @@ const removeValue = () => {
         </div>
     )
 }
+
+
+export default App
