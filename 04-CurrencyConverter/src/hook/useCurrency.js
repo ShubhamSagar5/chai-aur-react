@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const convertCurrency = async (from, to, amount) => {
+const convertCurrency = async (from, to, amount,setLoading) => {
   const options = {
     method: 'GET',
     url: 'https://currency-conversion-and-exchange-rates.p.rapidapi.com/convert',
@@ -16,9 +16,14 @@ const convertCurrency = async (from, to, amount) => {
   };
 
   try {
+    setLoading(true)
     const response = await axios.request(options);
     console.log(response);
+    if(response){
+      setLoading(false)
+    }
     return response?.data?.result;
+   
   } catch (error) {
     console.error(error);
     return null;

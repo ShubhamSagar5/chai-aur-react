@@ -15,7 +15,7 @@ const App = () => {
     const [resCurrType,setResCurrType] = useState("INR") 
     const [netCall,setNetCall] = useState(true)
     const [finalResult,setFinalResult] = useState(null)
-
+    const [loading,setLoading] = useState(false)
     console.log(amount +" "+ resultAmount +" "+currType +" "+ resCurrType)
 
     const handleSwapFunctionality = () => {
@@ -28,7 +28,7 @@ const App = () => {
  
 
     const handleFinalResult = async() => {
-        const convertedResult = await convertCurrency(currType,resCurrType,amount);
+        const convertedResult = await convertCurrency(currType,resCurrType,amount,setLoading);
        console.log(convertedResult)
        setResultAmount(convertedResult)
       
@@ -52,6 +52,12 @@ const App = () => {
         <div className='mx-auto bg-blue-800 py-2 text-white px-4 flex justify-center rounded-lg w-[100px]'>
             <button onClick={handleFinalResult}> Convert </button>
         </div>
+       {
+        loading ? (<div>
+            <p className='flex justify-center pt-2 text-2xl font-semibold'>Loading...</p>
+        </div>) : (<div></div>)
+       }
+        
         </div>
         </div>
         
